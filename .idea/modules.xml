@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/Prog3practica2.iml" filepath="$PROJECT_DIR$/Prog3practica2.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/tpe.iml" filepath="$PROJECT_DIR$/tpe.iml" />
+>>>>>>> 53bef38ae00d57422410c83d6beea0f5c8f3a6cf
+    </modules>
+  </component>
+</project>
