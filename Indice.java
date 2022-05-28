@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Indice {
 
-    private Map<String, Set<Libro>> generos;
+    private Tree<String> generos;
 
     public Indice() {
         generos = new HashMap<>();
@@ -18,12 +18,12 @@ public class Indice {
         }
     }
 
-    private void indexar(Libro libro, String genero){
+    /*private void indexar(Libro libro, String genero){
         if(generos.containsKey(genero)){
             generos.get(genero).add(libro);
         } else {
             generos.put(genero, new HashSet<>());
             generos.get(genero).add(libro);
         }
-    }
+    }*/
 }
