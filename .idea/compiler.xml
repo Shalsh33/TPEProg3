@@ -2,7 +2,11 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+<<<<<<< HEAD
       <module name="Prog3practica2" options="--add-modules java.base" />
+=======
+      <module name="tpe" options="--add-modules java.base" />
+>>>>>>> 53bef38ae00d57422410c83d6beea0f5c8f3a6cf
     </option>
   </component>
 </project>
