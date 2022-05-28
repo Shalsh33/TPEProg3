@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Indice {
 
-    private Map<String, Set<Libro>> generos;
+    private  generos;
 
     public Indice() {
         generos = new HashMap<>();
