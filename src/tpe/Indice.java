@@ -1,20 +1,22 @@
-package tpe;
+package src.tpe;
 
 import java.util.*;
 
 public class Indice {
 
 
-    private Tree<String> generos;
+    private TreeWithNode generos;
 
     public Indice() {
-
+    	TreeWithNode generos = new TreeWithNode() ;
     }
 
     public void indexar(Libro libro){
         Iterator<String> generosLibro = libro.getGeneros();
         while(generosLibro.hasNext()){
             String genero = generosLibro.next();
+            generos.add(genero);
+            generos.agregarLibro(genero, libro);
 
         }
     }

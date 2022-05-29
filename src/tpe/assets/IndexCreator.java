@@ -1,7 +1,7 @@
-package tpe.assets;
+package src.tpe.assets;
 
-import tpe.Indice;
-import tpe.Libro;
+import src.tpe.*;
+
 
 public class IndexCreator {
 

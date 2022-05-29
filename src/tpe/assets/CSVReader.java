@@ -1,6 +1,6 @@
-package tpe.assets;
+package src.tpe.assets;
 
-import tpe.*;
+import src.tpe.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,10 +9,11 @@ import java.util.LinkedList;
 
 public class CSVReader {
 
-    public static final String PATH = "C://users/blase/desktop/prog3/src/tpe/assets/csv/dataset1.csv";
+    //public static final String PATH = "C://users/blase/desktop/prog3/src/tpe/assets/csv/dataset1.csv";
+    public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset1.csv";
     public static final String SPLIT = ",";
 
-    public static Indice read(LinkedList<Libro> lista) {
+    public static Indice read() {
 
         String line;
         IndexCreator index = new IndexCreator();
@@ -23,10 +24,7 @@ public class CSVReader {
 
                 String[] items = line.split(SPLIT);
                 Libro l = LibroFormatter.format(items) ;
-                lista.add(l);
                 index.indexar(l);
-
-
             }
         } catch (IOException e) {
             e.printStackTrace();

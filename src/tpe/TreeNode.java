@@ -1,3 +1,7 @@
+package src.tpe;
+
+import java.util.*;
+
 public class TreeNode {
 
 	private String genero;
@@ -28,5 +32,15 @@ public class TreeNode {
 		this.right = right;
 	}
 
-	
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public void addLibro(Libro l) {
+		this.libros.add(l);
+	}
 }

@@ -1,8 +1,6 @@
-package arboles;
+package src.tpe;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 
 public class TreeWithNode {
 
@@ -12,61 +10,59 @@ public class TreeWithNode {
 		this.root = null;
 	}
 	
-	public void add(Integer value) {
+	public void add(String genero) {
 		if (this.root == null)
-			this.root = new TreeNode(value);
+			this.root = new TreeNode(genero);
 		else
-			this.add(this.root,value);
+			this.add(this.root, genero);
 	}
 	
 	
-	private void add(TreeNode actual, Integer value) {
-		if (actual.getValue() > value) {
+	private void add(TreeNode actual, String genero) {
+		if (actual.getGenero().compareTo(genero) > 0) {
 			if (actual.getLeft() == null) { 
-				TreeNode temp = new TreeNode(value);
+				TreeNode temp = new TreeNode(genero);
 				actual.setLeft(temp);
 			} else {
-				add(actual.getLeft(),value);
+				add(actual.getLeft(),genero);
 			}
-		} else if (actual.getValue() < value) {
+		} else if (actual.getGenero().compareTo(genero) < 0) {
 			if (actual.getRight() == null) { 
-				TreeNode temp = new TreeNode(value);
+				TreeNode temp = new TreeNode(genero);
 				actual.setRight(temp);
 			} else {
-				add(actual.getRight(),value);
+				add(actual.getRight(), genero);
 			}
 		}
 	}
 	
-	//Integer getRoot() 
-	private Integer getRoot() {
+	//getRoot() 
+	private String getRoot() {
 		if (this.root != null) {
-			return this.root.getValue();
+			return this.root.getGenero();
 		} else {
 			return null ;
 		}
 	}
 	
-	//boolean hasElem(Integer)
-	/**
-	 * Complejidad: O(h) h= altura del arbol (porque se puede decidir ir a der o izq)
-	 * @param n
-	 * @param busco
-	 * @return
-	 */
 	
-	public boolean hasElem(TreeNode n, Integer busco) {
-		if (n.getValue() == busco) {
-			return true ;
+	public void agregarLibro(String genero, Libro l) {
+		if (this.root != null) {
+			this.agregarLibro(this.root, genero, l);
+		}
+	}
+	
+	private void agregarLibro(TreeNode n, String genero, Libro l) {
+		if (n.getGenero().compareTo(genero) == 0) {
+			n.addLibro(l);
 		} else {
-			if ((n.getValue() > busco) && (n.getLeft() != null)){
-				return hasElem(n.getLeft(), busco);
+			if ((n.getGenero().compareTo(genero) > 0) && (n.getLeft() != null)){
+				agregarLibro(n.getLeft(), genero, l);
 			}
-			if ((n.getValue() < busco) && (n.getRight() != null)){
-				return hasElem(n.getRight(), busco);
+			if ((n.getGenero().compareTo(genero) < 0) && (n.getRight() != null)){
+				agregarLibro(n.getRight(), genero, l);
 			}
 		}
-		return false ;
 	}
 	
 	//boolean isEmpty() 
@@ -99,7 +95,7 @@ public class TreeWithNode {
 	private void printPosOrder(TreeNode n) {
 		if (n.getLeft() != null) printPosOrder(n.getLeft());
 		if (n.getRight() != null ) printPosOrder(n.getRight());
-		System.out.println(n.getValue()) ;
+		System.out.println(n.getGenero()) ;
 	}
 	
 	//void printPreOrder()
@@ -109,7 +105,7 @@ public class TreeWithNode {
 		}
 	}
 	private void printPreOrder(TreeNode n) {
-		System.out.print(n.getValue() + " ") ;
+		System.out.print(n.getGenero() + " ") ;
 		if (n.getLeft() != null) printPreOrder(n.getLeft());
 		else System.out.print("- ");
 		if (n.getRight() != null ) printPreOrder(n.getRight());
@@ -134,7 +130,7 @@ public class TreeWithNode {
 		else { 
 			System.out.print("- ");; 
 		}
-			System.out.print(n.getValue()) ;
+			System.out.print(n.getGenero()) ;
 		if (n.getRight() != null ) {
 			printInOrder(n.getRight());
 		} else { 
@@ -142,180 +138,9 @@ public class TreeWithNode {
 		}
 	}
 
-	//List getLongestBranch()
-	public List <Integer> getLongestBranch() {
-		List<Integer> lis = new ArrayList<Integer>();
-		if (this.root != null) {
-			lis.addAll(getLongestBranch(this.root));
-		}
-		return lis;
-	}
-	
-	private List <Integer> getLongestBranch(TreeNode n){
-		List<Integer> izq = new ArrayList<Integer>();
-		List<Integer> der = new ArrayList<Integer>();
-		if ((n.getLeft() == null) && (n.getRight() == null)) {
-			izq.add(n.getValue());
-			return izq ;
-		}
-		if (n.getLeft() != null) {
-			izq.add(n.getValue());
-			izq.addAll(getLongestBranch(n.getLeft()));
-		}
-		if (n.getRight() != null) {
-			der.add(n.getValue());
-			der.addAll(getLongestBranch(n.getRight()));
-		}
-		if (izq.size() >= der.size()) {
-			return izq ;
-		} else {
-			return der ;
-		}
-	}
-	
-	// List getFrontera()
-	public List <Integer> getFrontera() {
-		List<Integer> lis = new ArrayList<Integer>();
-		if (this.root == null) {
 			
-		}else {
-			lis.addAll(getFrontera(this.root));
-		}
-		return lis;
-	}
-	private List <Integer> getFrontera(TreeNode n) {
-		List<Integer> izq = new ArrayList<Integer>();
-		List<Integer> der = new ArrayList<Integer>();
-		
-		if ((n.getLeft() == null) && (n.getRight() == null)) {
-			izq.add(n.getValue());
-		}
-		if (n.getLeft() != null) {
-			izq.addAll(getFrontera(n.getLeft())) ; 
-		}
-		if (n.getRight() != null) {
-			der.addAll(getFrontera(n.getRight())) ; 
-		}
-		izq.addAll(der) ;
-		return izq ;
-	}
-	
-	//Integer getMaxElem()
-	public Integer getMaxElem(TreeNode n) {
-		if (n.getRight() == null) {
-			return n.getValue() ;
-		} else {
-			return getMaxElem(n.getRight()) ;
-		}
-	}
-	//Integer getMinElem()
-		public Integer getMinElem(TreeNode n) {
-			if (n.getLeft() == null) {
-				return n.getValue() ;
-			} else {
-				return getMinElem(n.getLeft()) ;
-			}
-		}
-	
-	//getElemAtLEvel
-	public List <Integer> elemAtLevel(int level) {
-		List<Integer> lis = new ArrayList<Integer>();
-		if (this.root == null) {
-			
-		}else {
-			lis.addAll(getElemAtLevel(this.root, level));
-		}
-		return lis;
-	}
-	
-	private List <Integer> getElemAtLevel(TreeNode n, int level) {
-		List<Integer> lis = new ArrayList<Integer>();
-		if (level == 0 ) {
-			lis.add(n.getValue());
-		}
-		if (n.getLeft()!= null) {
-			lis.addAll(getElemAtLevel(n.getLeft(), level-1)); 
-		}
-		if (n.getRight()!= null) {
-			lis.addAll(getElemAtLevel(n.getRight(), level-1)); 
-		}
-		return lis;
-	}
-	
 	private boolean esHoja(TreeNode n) {
 		return ((n.getLeft() == null) && (n.getRight() == null)) ;
 	}
-	
-	public boolean delete(Integer valor) {
-		if (this.root == null) {
-			return false ;
-		}else {
-			if (this.getRoot() == valor) {
-				if (esHoja(this.root)) {
-					this.root = null;
-					return true ;
-				}
-				return deleteNoEsHoja(this.root) ;
-			} else {
-				return delete(this.root, valor);
-			}
-		}
-	}
-	//boolean delete(Integer)
-	private boolean delete(TreeNode n, Integer valor) {
-	
-		if (n.getValue() > valor) { //voy a izquierda
-			if (n.getLeft() != null) {
-				if (n.getLeft().getValue().equals(valor)) { //este hay que borrar
-					if (esHoja(n.getLeft())) {
-						n.setLeft(null);
-						return true ;
-					}else { //si no es hoja
-						return deleteNoEsHoja(n.getLeft()) ;
-					}
-				} else {
-					return delete(n.getLeft(), valor) ;
-				}
-			} else {
-				return false ; // no hay nada a la izquierda
-			}
-			
-		}//voy a izquierda
-		else {
-			 //voy a derecha
-				if (n.getRight() != null) {
-					if (n.getRight().getValue().equals(valor)) { //este hay que borrar
-						if (esHoja(n.getRight())) {
-							n.setRight(null);
-							return true ;
-						}else { //si no es hoja
-							return deleteNoEsHoja(n.getRight()) ;
-						}
-					}else {
-						return delete(n.getRight(), valor) ;
-					}
-				}else {
-					return false ; // no hay nada a la derecha
-				}
-			}//voy a derecha
-		}
-	
-	private boolean deleteNoEsHoja(TreeNode nodo) {
-		if (nodo.getLeft() != null) { //busco máximo x izquierda
-			Integer maxIzq = getMaxElem(nodo.getLeft()) ;
-			delete(nodo, maxIzq) ;
-			nodo.setValue(maxIzq);
-			return true ;
-		} else {
-			if (nodo.getRight() != null) { //busco mínimo x derecha
-				Integer minDer = getMinElem(nodo.getRight()) ;
-				delete(nodo, minDer) ;
-				nodo.setValue(minDer) ;
-				return true ;
-			}else {
-				return false ;  
-			}
-		} 
-	} 
-	
+		
 }
