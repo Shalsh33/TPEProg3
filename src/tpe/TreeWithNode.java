@@ -95,7 +95,7 @@ public class TreeWithNode {
 	private void printPosOrder(TreeNode n) {
 		if (n.getLeft() != null) printPosOrder(n.getLeft());
 		if (n.getRight() != null ) printPosOrder(n.getRight());
-		System.out.println(n.getGenero()) ;
+		System.out.println(n.getGenero() + " = " + n.getCantLibros()) ;
 	}
 	
 	//void printPreOrder()

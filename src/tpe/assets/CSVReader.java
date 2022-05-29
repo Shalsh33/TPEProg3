@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class CSVReader {
 
     //public static final String PATH = "C://users/blase/desktop/prog3/src/tpe/assets/csv/dataset1.csv";
-    public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset1.csv";
+    public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset2.csv";
     public static final String SPLIT = ",";
 
     public static Indice read() {
@@ -29,7 +29,7 @@ public class CSVReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
         return index.getIndice();
     }
 

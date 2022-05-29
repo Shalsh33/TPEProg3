@@ -8,7 +8,7 @@ public class Indice {
     private TreeWithNode generos;
 
     public Indice() {
-    	TreeWithNode generos = new TreeWithNode() ;
+    	this.generos = new TreeWithNode() ;
     }
 
     public void indexar(Libro libro){
@@ -20,13 +20,9 @@ public class Indice {
 
         }
     }
-
-    /*private void indexar(Libro libro, String genero){
-        if(generos.containsKey(genero)){
-            generos.get(genero).add(libro);
-        } else {
-            generos.put(genero, new HashSet<>());
-            generos.get(genero).add(libro);
-        }
-    }*/
+    
+    public void imprimirGeneros(){
+    	generos.printPosOrder();
+    }
+    
 }

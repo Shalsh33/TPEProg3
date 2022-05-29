@@ -43,4 +43,8 @@ public class TreeNode {
 	public void addLibro(Libro l) {
 		this.libros.add(l);
 	}
+
+	public int getCantLibros() {
+		return this.libros.size();
+	}
 }
