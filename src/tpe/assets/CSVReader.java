@@ -10,7 +10,10 @@ import java.util.LinkedList;
 public class CSVReader {
 
     //public static final String PATH = "C://users/blase/desktop/prog3/src/tpe/assets/csv/dataset1.csv";
+	//public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset1.csv";
     public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset2.csv";
+    //public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset3.csv";
+    //public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset4.csv";
     public static final String SPLIT = ",";
 
     public static Indice read() {

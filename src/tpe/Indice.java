@@ -22,7 +22,12 @@ public class Indice {
     }
     
     public void imprimirGeneros(){
-    	generos.printPosOrder();
+    	//generos.printPosOrder();
+    	generos.printInOrder();
+    }
+    
+    public void getIndiceGenero(String genero){
+    	generos.getLibrosGenero(genero);
     }
     
 }

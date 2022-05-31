@@ -1,5 +1,9 @@
 package src.tpe;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class TreeWithNode {
@@ -141,6 +145,70 @@ public class TreeWithNode {
 			
 	private boolean esHoja(TreeNode n) {
 		return ((n.getLeft() == null) && (n.getRight() == null)) ;
+	}
+
+	public void getLibrosGenero(String genero) {
+		if (this.root != null) {
+			List<Libro> listaLibros = new LinkedList<Libro>();
+			listaLibros.addAll(getListaLibros(this.root, genero));
+			writeLibrosGenero(listaLibros) ;
+		}
+	}
+	
+	public static void writeLibrosGenero(List<Libro>lista) {
+		
+		BufferedWriter bw = null;
+		try {
+			File file = new File("C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/salida.csv");
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			FileWriter fw = new FileWriter(file);
+			bw = new BufferedWriter(fw);
+
+			// Escribo la primer linea del archivo
+			String contenidoLinea1 = "Usuario1;Tiempo1";
+			bw.write(contenidoLinea1);
+			bw.newLine();
+
+			// Escribo la segunda linea del archivo
+			String contenidoLinea2 = "Usuario2;Tiempo2";
+			bw.write(contenidoLinea2);
+			bw.newLine();
+			
+			Iterator<Libro> l = lista.iterator();
+	        while(l.hasNext()){
+	             String nombreLibro = l.next().getTitulo();
+	             bw.write(nombreLibro);
+	     		 bw.newLine();
+	        	}
+	                  
+	     	} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} finally {
+			try {
+				if (bw != null)
+					bw.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	public List<Libro> getListaLibros(TreeNode n, String genero) {
+		List<Libro> aux = new LinkedList<Libro>();
+		if (n.getGenero().compareTo(genero) == 0) {
+			aux.addAll(n.getLibros()) ;
+		} else {
+			if ((n.getGenero().compareTo(genero) > 0) && (n.getLeft() != null)){
+				aux.addAll(getListaLibros(n.getLeft(), genero)) ;
+			}
+			if ((n.getGenero().compareTo(genero) < 0) && (n.getRight() != null)){
+				aux.addAll(getListaLibros(n.getRight(), genero));
+			}
+		}
+		return aux ;
 	}
 		
 }
