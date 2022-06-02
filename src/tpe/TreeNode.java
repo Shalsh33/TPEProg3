@@ -47,10 +47,11 @@ public class TreeNode {
 	public int getCantLibros() {
 		return this.libros.size();
 	}
-	
+
 	public List<Libro> getLibros(){
 		List<Libro> aux = new LinkedList<Libro>();
 		aux.addAll(this.libros) ;
 		return aux ;
 	}
 }
+

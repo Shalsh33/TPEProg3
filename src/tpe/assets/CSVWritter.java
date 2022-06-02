@@ -6,14 +6,16 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 public class CSVWritter {
 
-	public static void writeLibrosGenero(TreeNode raiz, String genero) {
-		
+	public static void writeLibros(List<Libro> libros) {
+
 		BufferedWriter bw = null;
 		try {
-			File file = new File("C://salida.csv");
+			File file = new File("C://Users/blase/desktop/prog3tpe/tpe/assets/csv/salida.csv");
 			if (!file.exists()) {
 				file.createNewFile();
 			}
@@ -21,21 +23,12 @@ public class CSVWritter {
 			FileWriter fw = new FileWriter(file);
 			bw = new BufferedWriter(fw);
 
-			// Escribo la primer linea del archivo
-			String contenidoLinea1 = "Usuario1;Tiempo1";
-			bw.write(contenidoLinea1);
-			bw.newLine();
-
-			// Escribo la segunda linea del archivo
-			String contenidoLinea2 = "Usuario2;Tiempo2";
-			bw.write(contenidoLinea2);
-			bw.newLine();
-			
-			/*
-			 *
-			 * ... 
-			 * 
-			*/
+			Iterator<Libro> l = libros.iterator();
+			while(l.hasNext()){
+				String nombreLibro = l.next().getTitulo();
+				bw.write(nombreLibro);
+				bw.newLine();
+			}
 
 		} catch (IOException ioe) {
 			ioe.printStackTrace();

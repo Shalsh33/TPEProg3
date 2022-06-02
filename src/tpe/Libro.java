@@ -1,9 +1,7 @@
 package src.tpe;
 
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 
 public class Libro {
@@ -11,10 +9,10 @@ public class Libro {
     private String titulo;
     private String autor;
     private int pag;
-    private Set<String> generos;
+    private List<String> generos;
 
     public Libro(){
-        generos = new HashSet<>();
+        generos = new LinkedList<>();
     }
 
     public String getTitulo() {
