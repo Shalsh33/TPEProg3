@@ -1,6 +1,6 @@
-package src.tpe.assets;
+package tpe.assets;
 
-import src.tpe.*;
+import tpe.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
