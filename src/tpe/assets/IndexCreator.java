@@ -1,6 +1,6 @@
-package tpe.assets;
+package src.tpe.assets;
 
-import tpe.*;
+import src.tpe.*;
 
 
 public class IndexCreator {

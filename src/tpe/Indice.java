@@ -34,5 +34,10 @@ public class Indice {
         List<Libro> libros = generos.getLibrosGenero(genero.toLowerCase());
         CSVWritter.writeLibros(libros);
     }
+    
+    public void imprimirDatosIndice(){
+        generos.printAltura();
+        generos.printCantNodos();
+    }
 
 }

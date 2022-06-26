@@ -1,6 +1,6 @@
-package tpe.assets;
+package src.tpe.assets;
 
-import tpe.*;
+import src.tpe.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,7 +15,7 @@ public class CSVWritter {
 
 		BufferedWriter bw = null;
 		try {
-			File file = new File("C://Users/blase/desktop/prog3tpe/tpe/assets/csv/salida.csv");
+			File file = new File("C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/salida.csv");
 			if (!file.exists()) {
 				file.createNewFile();
 			}
