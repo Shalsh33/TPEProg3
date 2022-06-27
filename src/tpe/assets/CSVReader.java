@@ -1,6 +1,6 @@
-package tpe.assets;
+package src.tpe.assets;
 
-import tpe.*;
+import src.tpe.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,18 +10,13 @@ import java.util.List;
 
 public class CSVReader {
 
-    public static final String PATH = "c:/Users/blase/Desktop/Prog3TPE/tpe/assets/csv/dataset4.csv";
-	//public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset1.csv";
-    //public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset2.csv";
-    //public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset3.csv";
-    //public static final String PATH = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset4.csv";
     public static final String SPLIT = ",";
 
-    public static void read(List<Libro> libros, Indice indice) {
+    public static void read(List<Libro> libros, Indice indice, String path) {
 
         String line;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
             while ((line = br.readLine()) != null) {
 

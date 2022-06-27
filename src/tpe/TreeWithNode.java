@@ -81,7 +81,7 @@ public class TreeWithNode {
 		if (n.getRight() != null ) {
 			printInOrder(n.getRight());
 		} else {
-			System.out.print("- ");;
+			System.out.print("- ");
 		}
 	}
 
@@ -109,5 +109,61 @@ public class TreeWithNode {
 		}
 		return aux ;
 	}
-
+	
+	public int getAltura() {
+		if (this.root != null) {
+			return getAltura(this.root) ;
+		} else {
+			return 0;
+		}
+	}
+		
+	private int getAltura(TreeNode n) {
+		if ((n.getLeft() == null) && (n.getRight() == null)) {
+			return 0;
+		}
+		int der = 0;
+		int izq = 0;
+		if (n.getLeft() != null) {
+			izq = getAltura(n.getLeft()) + 1 ;
+		}
+		if (n.getRight() != null) {
+			der = getAltura(n.getRight()) + 1 ;
+		}
+		return Math.max(izq, der) ;
+	}
+	
+	public int getCantNodos() {
+		if (this.root != null) {
+			return getCantNodos(this.root) ;
+		} else {
+			return 0;
+		}
+	}
+	private int getCantNodos(TreeNode n) {
+		if ( n== null ) {
+			return 0;
+		}
+			int izq = 0 ;
+			int der = 0 ;
+			if (n.getLeft() != null) {
+				izq += getCantNodos(n.getLeft())  ;
+			}
+			if (n.getRight() != null) {
+				der += getCantNodos(n.getRight()) ;
+			}
+			return izq + der + 1;
+		}
+	
+	public void printAltura() {
+		if (this.root != null) {
+			System.out.println("Altura del árbol: " + this.getAltura()); ;
+		}
+	}
+	
+	public void printCantNodos() {
+		if (this.root != null) {
+			System.out.println("Cantidad de nodos del índice: " + this.getCantNodos()); 
+		}
+	}
 }
