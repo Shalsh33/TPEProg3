@@ -27,12 +27,12 @@ public class TPE {
         System.out.println();
       
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-            System.out.println("Por favor ingrese genero de búsqueda: ");//Se pide un dato al usuario
+            System.out.println("Por favor ingrese genero de bï¿½squeda: ");//Se pide un dato al usuario
             String genero = br.readLine();
             if (!(genero == null) && (!(genero.equals(" ")))){
                 temporizador.start();
                 indice.getIndiceGenero(genero) ;
-                System.out.println(temporizador.stop() + " milisegundos de búsqueda y escritura") ;
+                System.out.println(temporizador.stop() + " milisegundos de bï¿½squeda y escritura") ;
                 indice.imprimirDatosIndice();
             }
         } catch (IOException e) {
