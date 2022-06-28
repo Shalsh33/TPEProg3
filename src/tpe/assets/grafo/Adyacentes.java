@@ -36,7 +36,15 @@ public class Adyacentes {
     //"n veces" (Complejidad O(n*N)).
     //Sino podemos agarrar los primeros "n elementos", ordenarlos e ir recorriendo el resto solo buscando los que
     //entren en la estructura. Es más complejo de programar. complejidad O(N)
-    public List<String> getNAdyacentes(int n){
+    public List<Map.Entry<String,Integer>> getNAdyacentes(int n){
+        //mapa:
+        //Te da las claves
+        adyacentes.keySet();
+        //te da los valores
+        adyacentes.values();
+        //te da ambos.-
+        adyacentes.entrySet();
+        adyacentes.entrySet().iterator().next();
         return null;
     }
 }

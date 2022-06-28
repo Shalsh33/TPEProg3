@@ -43,9 +43,11 @@ public class TPE {
         //Parte 2
 
         //Agregar una funcion al CSV reader para que lea y cargue el grafo.
+        //Blas
 
         //A
         //Para obtener los N géneros está el método en la clase Adyacentes a completar.
+        // Andre
 
         //B
         //Buscar el más alto valor de búsqueda. Esto es un greedy común.
@@ -55,6 +57,7 @@ public class TPE {
         //Recorremos todos los adyacentes
         //Los pasamos a la copia
         //Es un backtracking común
+        //Andre
 
     }
 
