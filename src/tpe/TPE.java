@@ -51,6 +51,7 @@ public class TPE {
 
         //B
         //Buscar el más alto valor de búsqueda. Esto es un greedy común.
+        //Blas
 
         //C
         //Busqueda de ciclos en el grafo
