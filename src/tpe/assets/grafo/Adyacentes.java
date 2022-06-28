@@ -1,9 +1,6 @@
 package src.tpe.assets.grafo;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Adyacentes {
 
@@ -33,5 +30,13 @@ public class Adyacentes {
             arcos.add(new Arco(this.origen, fila.getKey(), fila.getValue()));
         }
         return arcos;
+    }
+
+    //Si clonamos el mapa podemos recorrerlo buscando el mayor, agregarlo a la lista y borrarlo del mapa clonado
+    //"n veces" (Complejidad O(n*N)).
+    //Sino podemos agarrar los primeros "n elementos", ordenarlos e ir recorriendo el resto solo buscando los que
+    //entren en la estructura. Es más complejo de programar. complejidad O(N)
+    public List<String> getNAdyacentes(int n){
+        return null;
     }
 }

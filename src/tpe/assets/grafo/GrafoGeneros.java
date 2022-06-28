@@ -59,4 +59,23 @@ public class GrafoGeneros {
             return null;
     }
 
+    public List<GrafoGeneros> obtenerCiclos(String origen){
+        List<GrafoGeneros> lista = new ArrayList<>();
+        for(String adyacente: nodos.get(origen).getAdyacentes()){
+            DFS(adyacente,origen,lista);
+        }
+
+        return lista;
+    }
+
+    private void DFS(String origen, String destino, List<GrafoGeneros> lista, GrafoGeneros camino) {
+        if(origen == destino){
+            lista.add(camino);
+        } else {
+            for adyacentes {
+             DFS;
+            }
+        }
+    }
+
 }

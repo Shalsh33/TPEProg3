@@ -40,6 +40,22 @@ public class TPE {
             e.printStackTrace();
         }
 
+        //Parte 2
+
+        //Agregar una funcion al CSV reader para que lea y cargue el grafo.
+
+        //A
+        //Para obtener los N géneros está el método en la clase Adyacentes a completar.
+
+        //B
+        //Buscar el más alto valor de búsqueda. Esto es un greedy común.
+
+        //C
+        //Busqueda de ciclos en el grafo
+        //Recorremos todos los adyacentes
+        //Los pasamos a la copia
+        //Es un backtracking común
+
     }
 
 
