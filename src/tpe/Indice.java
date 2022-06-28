@@ -30,9 +30,9 @@ public class Indice {
         generos.printInOrder();
     }
 
-    public void getIndiceGenero(String genero){
+    public void getIndiceGenero(String genero, String pathOut){
         List<Libro> libros = generos.getLibrosGenero(genero.toLowerCase());
-        CSVWritter.writeLibros(libros);
+        CSVWritter.writeLibros(libros, pathOut);
     }
     
     public void imprimirDatosIndice(){
