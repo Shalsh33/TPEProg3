@@ -11,11 +11,11 @@ import java.util.List;
 
 public class CSVWritter {
 
-	public static void writeLibros(List<Libro> libros) {
+	public static void writeLibros(List<Libro> libros, String pathOut) {
 
 		BufferedWriter bw = null;
 		try {
-			File file = new File("C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/salida.csv");
+			File file = new File(pathOut);
 			if (!file.exists()) {
 				file.createNewFile();
 			}

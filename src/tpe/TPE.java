@@ -18,8 +18,8 @@ public class TPE {
         Indice indice = new Indice();
 
       //public static final String PATH = "c:/Users/blase/Desktop/Prog3TPE/tpe/assets/csv/dataset4.csv";
-    	final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset4.csv";
-            	
+    	final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset2.csv";
+        final String pathSalida = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/salida.csv";     	
         temporizador.start();
         CSVReader.read(libros,indice, path);
         System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
@@ -31,7 +31,7 @@ public class TPE {
             String genero = br.readLine();
             if (!(genero == null) && (!(genero.equals(" ")))){
                 temporizador.start();
-                indice.getIndiceGenero(genero) ;
+                indice.getIndiceGenero(genero, pathSalida) ;
                 System.out.println(temporizador.stop() + " milisegundos de búsqueda y escritura") ;
                 indice.imprimirDatosIndice();
             }
