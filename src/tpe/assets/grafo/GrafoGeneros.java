@@ -59,10 +59,18 @@ public class GrafoGeneros {
             return null;
     }
 
+    public void eliminarGenero(String genero) {
+        nodos.remove(genero);
+    }
+    /*
+     * Obtener el grafo únicamente con los géneros afines a un género A
+     */
     public List<GrafoGeneros> obtenerCiclos(String origen){
         List<GrafoGeneros> lista = new ArrayList<>();
+        GrafoGeneros camino = new GrafoGeneros();
+        
         for(String adyacente: nodos.get(origen).getAdyacentes()){
-            DFS(adyacente,origen,lista);
+        	DFS(adyacente, origen, lista, camino );
         }
 
         return lista;
@@ -72,8 +80,13 @@ public class GrafoGeneros {
         if(origen == destino){
             lista.add(camino);
         } else {
-            for adyacentes {
-             DFS;
+        	for(String adyacente: nodos.get(origen).getAdyacentes()){
+        		
+        		camino.agregarRelacion(origen, adyacente);       		
+                
+        		DFS(adyacente, destino, lista, camino);
+                
+                camino.eliminarGenero(origen);
             }
         }
     }

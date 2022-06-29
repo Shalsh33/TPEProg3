@@ -1,6 +1,7 @@
 package src.tpe.assets.grafo;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Adyacentes {
 
@@ -32,19 +33,30 @@ public class Adyacentes {
         return arcos;
     }
 
-    //Si clonamos el mapa podemos recorrerlo buscando el mayor, agregarlo a la lista y borrarlo del mapa clonado
-    //"n veces" (Complejidad O(n*N)).
-    //Sino podemos agarrar los primeros "n elementos", ordenarlos e ir recorriendo el resto solo buscando los que
-    //entren en la estructura. Es mÃ¡s complejo de programar. complejidad O(N)
+    /*
+     * Obtener los N géneros más buscados luego de buscar por el género A
+     */
+
     public List<Map.Entry<String,Integer>> getNAdyacentes(int n){
-        //mapa:
-        //Te da las claves
-        adyacentes.keySet();
-        //te da los valores
-        adyacentes.values();
-        //te da ambos.-
-        adyacentes.entrySet();
-        adyacentes.entrySet().iterator().next();
-        return null;
-    }
+    	
+    	List<Map.Entry<String,Integer>> aux = new ArrayList<>() ;
+    	
+    	Iterator ady = adyacentes.entrySet().iterator();
+    	
+    	while (ady.hasNext()) {
+    		Map.Entry<String, Integer> elem = (Entry<String, Integer>) ady.next();
+    		int mayor = elem.getValue() ;
+    		int i = 0 ;
+    		while (aux.get(i).getValue() > mayor) {
+    			i++;
+            }
+    		aux.add( i, elem) ;
+    	}
+    	
+        if (aux.size() > n) {
+        	return aux.subList(0, n-1) ;
+        } else {
+        	return aux ;
+        }
+     }
 }
