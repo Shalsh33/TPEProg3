@@ -3,16 +3,17 @@ package src.tpe;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import src.tpe.Libro;
 import src.tpe.assets.*;
+import src.tpe.assets.Timer;
 
 public class TPE {
 
     public static void main(String[] args) {
 
+        /*
         Timer temporizador = new Timer();
         List<Libro> libros = new LinkedList<>();
         Indice indice = new Indice();
@@ -39,6 +40,7 @@ public class TPE {
         } catch (IOException e) {
             e.printStackTrace();
         }
+*/
 
         //Parte 2
 
@@ -60,7 +62,54 @@ public class TPE {
         //Es un backtracking común
         //Andre
 
+
+
     }
+
+  /* private static List<String> quickSort(List<Map.Entry<String, Integer>> ady, int inicio, int fin,int llamado) {
+        int pos = (inicio+fin+1)/2;
+        Map.Entry<String, Integer> pivot = ady.get(pos), auxI,auxJ;
+        int i = inicio;
+        int j = fin;
+
+        while(i<j){
+            while(ady.get(i).getValue() <= pivot.getValue() && i<j){
+                i++;
+            }
+            while(ady.get(j).getValue() > pivot.getValue()){
+                j--;
+            }
+            if(i<j){
+                auxI=ady.get(i);
+                auxJ= ady.get(j);
+                ady.remove(auxI);
+                ady.remove(auxJ);
+                ady.add(i,auxJ);
+                ady.add(j,auxI);
+            }
+
+        }
+
+        auxJ= ady.get(j);
+        ady.remove(auxJ);
+        ady.remove(pivot);
+        ady.add(pos,auxJ);
+        ady.add(j,pivot);
+
+        if(inicio < j-1){
+            quickSort(ady,inicio,j-1, llamado+1);
+        }
+        if (j+1 < fin){
+            quickSort(ady,j+1,fin,llamado+2);
+        }
+        System.out.println("llamado nro " + llamado + "size: " + ady.size());
+        List<String> result = new ArrayList<>();
+        for(Map.Entry<String, Integer> fila : ady){
+            result.add(fila.getKey());
+        }
+        return result;
+
+    }*/
 
 
 }

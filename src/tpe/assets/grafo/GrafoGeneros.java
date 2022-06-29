@@ -45,7 +45,7 @@ public class GrafoGeneros {
     }
 
 
-    public Set<String> obtenerAdyacentes(String origen) {
+    public List<String> obtenerAdyacentes(String origen) {
         if(contieneGenero(origen))
             return nodos.get(origen).getAdyacentes();
         else
@@ -62,20 +62,41 @@ public class GrafoGeneros {
     public List<GrafoGeneros> obtenerCiclos(String origen){
         List<GrafoGeneros> lista = new ArrayList<>();
         for(String adyacente: nodos.get(origen).getAdyacentes()){
-            DFS(adyacente,origen,lista);
+            //DFS(adyacente,origen,lista);
         }
 
         return lista;
     }
 
     private void DFS(String origen, String destino, List<GrafoGeneros> lista, GrafoGeneros camino) {
-        if(origen == destino){
+        /*if(origen == destino){
             lista.add(camino);
         } else {
             for adyacentes {
              DFS;
             }
+        }*/
+    }
+
+    public List<String> secuenciaConMasValor(String origen){
+        List<String> secuencia = new ArrayList<>();
+        List<String> visitados = new ArrayList<>();
+
+        if(contieneGenero(origen)){
+            List<String> candidatos = obtenerAdyacentes(origen);
+            visitados.add(origen);
+            secuencia.add(origen);
+            while(!candidatos.isEmpty()){
+                String s = candidatos.remove(0);
+                if(!visitados.contains(s)){
+                    visitados.add(s);
+                    secuencia.add(s);
+                    candidatos = obtenerAdyacentes(s);
+                }
+            }
         }
+
+        return secuencia;
     }
 
 }
