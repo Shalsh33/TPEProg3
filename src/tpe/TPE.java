@@ -12,10 +12,10 @@ import src.tpe.assets.grafo.GrafoGeneros;
 
 public class TPE {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
+		// Parte 2
 
-    	//Parte 2
 		/*
 		 * Timer temporizador = new Timer(); GrafoGeneros grafo = new GrafoGeneros();
 		 * 
@@ -28,57 +28,69 @@ public class TPE {
 		 * CSVReader.readGrafo(grafo, path); System.out.println(temporizador.stop() +
 		 * " milisegundos de carga de datos") ;
 		 * 
-		 * System.out.println(); // System.out.println(grafo);
+		 * System.out.println();
 		 * 
-		 * //Servicio 1: Obtener los N géneros más buscados luego de buscar por el
-		 * género A. System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
+		 * System.out.println("TamaÃ±o del grafo: " + grafo.cantidadVertices());
+		 * //System.out.println(grafo);
+		 * 
+		 * for(String s:grafo.secuenciaConMasValor("humor")){ System.out.println(s); }
+		 * 
+		 * temporizador.start(); System.out.println(grafo.obtenerCiclos("juegos"));
+		 * System.out.println(temporizador.stop() + " milisegundos de DFS") ;
+		 * 
+		 * 
+		 * 
+		 * //Servicio 1: Obtener los N gï¿½neros mï¿½s buscados luego de buscar por el
+		 * gï¿½nero A. System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
 		 */
-           
-         //Servicio 2: A partir de un género A encontrar, en tiempo polinomial, la secuencia 
-         //de géneros que más alto valor de búsqueda posee
-           
-           /* for(String s:grafo.secuenciaConMasValor("thriller")){
-               System.out.println(s);
-           }  */       
 
-         //Servicio 3: Obtener el grafo únicamente con los géneros afines a un género A
-           
-			/*
-			 * temporizador.start(); for(List<String> l: grafo.obtenerCiclos("juegos")){
-			 * System.out.println(l); } System.out.println(temporizador.stop() +
-			 * " milisegundos de DFS") ;
-			 */
+		// Servicio 2: A partir de un gï¿½nero A encontrar, en tiempo polinomial, la
+		// secuencia
+		// de gï¿½neros que mï¿½s alto valor de bï¿½squeda posee
 
-    	
-        //Parte 1
-        Timer temporizador = new Timer();
-        List<Libro> libros = new LinkedList<>();
-        Indice indice = new Indice();
+		/*
+		 * for(String s:grafo.secuenciaConMasValor("thriller")){ System.out.println(s);
+		 * }
+		 */
 
-      //public static final String PATH = "c:/Users/blase/Desktop/Prog3TPE/tpe/assets/csv/dataset4.csv";
-    	final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset1.csv";
-        final String pathSalida = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/salida.csv";     	
-        temporizador.start();
-        CSVReader.read(libros,indice, path);
-        System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
+		// Servicio 3: Obtener el grafo ï¿½nicamente con los gï¿½neros afines a un
+		// gï¿½nero A
 
-        System.out.println();
-      
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-            System.out.println("Por favor ingrese genero de bï¿½squeda: ");//Se pide un dato al usuario
-            String genero = br.readLine();
-            if (!(genero == null) && (!(genero.equals(" ")))){
-                temporizador.start();
-                indice.getIndiceGenero(genero, pathSalida) ;
-                System.out.println(temporizador.stop() + " milisegundos de bï¿½squeda y escritura") ;
+		/*
+		 * temporizador.start(); for(List<String> l: grafo.obtenerCiclos("juegos")){
+		 * System.out.println(l); } System.out.println(temporizador.stop() +
+		 * " milisegundos de DFS") ;
+		 */
 
-                indice.imprimirDatosIndice();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-     
-
-    }
+		// Parte 1
+		
+		  Timer temporizador = new Timer(); List<Libro> libros = new LinkedList<>();
+		  Indice indice = new Indice();
+		  
+		  //public static final String PATH = "c:/Users/blase/Desktop/Prog3TPE/tpe/assets/csv/dataset1.csv"; 
+		  final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/dataset4.csv";
+		  final String pathSalida = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv/salida.csv";
+		  temporizador.start(); 
+		  
+		  CSVReader.read(libros,indice, path);
+		  System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
+		  
+		  System.out.println();
+		  
+		  try (BufferedReader br = new BufferedReader(new
+		  InputStreamReader(System.in))){
+		  System.out.println("Por favor ingrese genero de bï¿½squeda: ");//Se pide un dato al usuario 
+		  String genero = br.readLine(); 
+		  if (!(genero == null) &&  (!(genero.equals(" ")))) {
+			  temporizador.start();
+			  indice.getIndiceGenero(genero, pathSalida) ;
+			  System.out.println(temporizador.stop() + " milisegundos de bï¿½squeda y escritura") ;
+		  
+		  indice.imprimirDatosIndice(); 
+		  } 
+		  } catch (IOException e) {
+		  e.printStackTrace(); }
+		 
+	}
 
 }
