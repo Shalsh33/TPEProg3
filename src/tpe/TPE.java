@@ -89,8 +89,13 @@ public class TPE {
 */
 
          //Servicio 1: Obtener los N g�neros m�s buscados luego de buscar por el g�nero A.
-          // System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
-           
+		System.out.println();
+		temporizador.start();
+          System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
+		System.out.println(temporizador.stop() + " milisegundos de Busqueda de N 5") ;
+		temporizador.start();
+		System.out.println(grafo.generosMasBuscados("negocios", 20)) ;
+		System.out.println(temporizador.stop() + " milisegundos de Busqueda de N 20") ;
          //Servicio 2: A partir de un g�nero A encontrar, en tiempo polinomial, la secuencia 
          //de g�neros que m�s alto valor de b�squeda posee
            
