@@ -13,6 +13,10 @@ public class Adyacentes {
         this.adyacentes = new HashMap<>();
     }
 
+    public int getCantAdyacentes(){
+        return adyacentes.size();
+    }
+
     public void setRelacion(String destino) {
         if(adyacentes.containsKey(destino)){
             adyacentes.replace(destino, adyacentes.get(destino)+ 1);

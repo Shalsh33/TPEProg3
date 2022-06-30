@@ -108,6 +108,7 @@ public class GrafoGeneros implements Cloneable {
 
         if(contieneGenero(origen)){
             List<Map.Entry<String,Integer>> candidatos = obtenerAdyacentes(origen);
+            System.out.println("El nodo tiene " + nodos.get(origen).getCantAdyacentes() + " adyacentes");
             visitados.add(origen);
             secuencia.add(origen);
             while(!candidatos.isEmpty()){
@@ -120,8 +121,8 @@ public class GrafoGeneros implements Cloneable {
                     candidatos = obtenerAdyacentes(s);
                 }
             }
+
         }
-        System.out.println(valor);
         return secuencia;
     }
     
@@ -133,6 +134,7 @@ public class GrafoGeneros implements Cloneable {
     	}
     	return aux ;
     }
+
     
     @Override
 	public String toString() {

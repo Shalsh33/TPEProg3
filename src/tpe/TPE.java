@@ -19,30 +19,77 @@ public class TPE {
     	   Timer temporizador = new Timer();
     	   GrafoGeneros grafo = new GrafoGeneros();
 
-    	   //final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv";
-    	   final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset3.csv";
+		final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset1.csv";
+    	   final String path2 = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv";
+		final String path3 = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset3.csv";
+		final String path4 = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset4.csv";
+    	   //final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset3.csv";
     	   temporizador.start();
-    	   
+		System.out.println("Grafo 1");
     	   CSVReader.readGrafo(grafo, path);
            System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
 
-           System.out.println();
+
 
            System.out.println("Tamaño del grafo: " + grafo.cantidadVertices());
            //System.out.println(grafo);
-
-           /*for(String s:grafo.secuenciaConMasValor("humor")){
+		temporizador.start();
+           for(String s:grafo.secuenciaConMasValor("humor")){
                System.out.println(s);
-           }                */
+           }
+		System.out.println(temporizador.stop() + " milisegundos de busqueda de secuencia más larga") ;
+		System.out.println();
+		System.out.println("Grafo 2");
+		CSVReader.readGrafo(grafo, path2);
+		System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
 
-        temporizador.start();
-        System.out.println(grafo.obtenerCiclos("juegos"));
-        System.out.println(temporizador.stop() + " milisegundos de DFS") ;
 
 
+		System.out.println("Tamaño del grafo: " + grafo.cantidadVertices());
+		//System.out.println(grafo);
+		temporizador.start();
+		for(String s:grafo.secuenciaConMasValor("humor")){
+			System.out.println(s);
+		}
+		System.out.println(temporizador.stop() + " milisegundos de busqueda de secuencia más larga") ;
+
+		System.out.println();
+		System.out.println("Grafo 3");
+		CSVReader.readGrafo(grafo, path3);
+		System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
+
+
+
+		System.out.println("Tamaño del grafo: " + grafo.cantidadVertices());
+		//System.out.println(grafo);
+		temporizador.start();
+		for(String s:grafo.secuenciaConMasValor("humor")){
+			System.out.println(s);
+		}
+		System.out.println(temporizador.stop() + " milisegundos de busqueda de secuencia más larga") ;
+
+		System.out.println();
+		System.out.println("Grafo 4");
+		CSVReader.readGrafo(grafo, path4);
+		System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
+
+
+		System.out.println("Tamaño del grafo: " + grafo.cantidadVertices());
+		//System.out.println(grafo);
+		temporizador.start();
+		for(String s:grafo.secuenciaConMasValor("humor")){
+			System.out.println(s);
+		}
+		System.out.println(temporizador.stop() + " milisegundos de busqueda de secuencia más larga") ;
+/*
+        	temporizador.start();
+        	System.out.println(grafo.obtenerCiclos("juegos"));
+        	System.out.println(temporizador.stop() + " milisegundos de DFS") ;
+
+*/
 
          //Servicio 1: Obtener los N g�neros m�s buscados luego de buscar por el g�nero A.
-           System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
+          // System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
            
          //Servicio 2: A partir de un g�nero A encontrar, en tiempo polinomial, la secuencia 
          //de g�neros que m�s alto valor de b�squeda posee
@@ -88,8 +135,6 @@ public class TPE {
             e.printStackTrace();
         }
 */
-
-        
 
     }
 
