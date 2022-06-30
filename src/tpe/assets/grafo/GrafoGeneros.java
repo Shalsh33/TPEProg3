@@ -16,6 +16,10 @@ public class GrafoGeneros implements Cloneable {
         nodos.put(genero, new Adyacentes(genero));
     }
 
+    public List<String> generos(){
+        return new ArrayList<>(nodos.keySet());
+    }
+
     public void agregarRelacion(String generoOrigen, String generoDestino) {
         if(!contieneGenero(generoOrigen)){
             agregarGenero(generoOrigen);
@@ -47,7 +51,7 @@ public class GrafoGeneros implements Cloneable {
     }
 
 
-    public List<String> obtenerAdyacentes(String origen) {
+    public List<Map.Entry<String,Integer>> obtenerAdyacentes(String origen) {
         if(contieneGenero(origen))
             return nodos.get(origen).getAdyacentes();
         else
@@ -68,12 +72,12 @@ public class GrafoGeneros implements Cloneable {
     /*
      * Obtener el grafo �nicamente con los g�neros afines a un g�nero A
      */
-    public List<GrafoGeneros> obtenerCiclos(String origen){
-        List<GrafoGeneros> lista = new ArrayList<>();
-        GrafoGeneros camino = new GrafoGeneros();
+    public List<List<String>> obtenerCiclos(String origen){
+        List<List<String>> lista = new ArrayList<>();
+        List<String> camino = new ArrayList<>();
         
-        for(String adyacente: nodos.get(origen).getAdyacentes()){
-
+        for(Map.Entry<String,Integer> fila: nodos.get(origen).getAdyacentes()){
+            String adyacente = fila.getKey();
         	DFS(adyacente, origen, lista, camino );
 
         }
@@ -81,17 +85,17 @@ public class GrafoGeneros implements Cloneable {
         return lista;
     }
 
-    private void DFS(String origen, String destino, List<GrafoGeneros> lista, GrafoGeneros camino) {
+    private void DFS(String origen, String destino, List<List<String>> lista, List<String> camino) {
         if(origen == destino){
-            lista.add(camino); //guardar copia
+            lista.add(new ArrayList<>(camino)); //guardar copia
         } else {
-        	for(String adyacente: nodos.get(origen).getAdyacentes()){
-        		
-        		if (!camino.contieneGenero(adyacente) && (!visitados.contains(adyacente))) { 
+        	for(Map.Entry<String,Integer> fila: nodos.get(origen).getAdyacentes()){
+        		String adyacente = fila.getKey();
+        		if (!camino.contains(adyacente) && (!visitados.contains(adyacente))) {
         			visitados.add(origen) ;
-        			camino.agregarRelacion(origen, adyacente);       		
+        			camino.add(adyacente);
 	        		DFS(adyacente, destino, lista, camino);
-	                camino.eliminarRelacion(origen, adyacente);
+	                camino.remove(adyacente);
 	                visitados.remove(origen) ;
                 }
             }
@@ -101,13 +105,16 @@ public class GrafoGeneros implements Cloneable {
     public List<String> secuenciaConMasValor(String origen){
         List<String> secuencia = new ArrayList<>();
         List<String> visitados = new ArrayList<>();
+        int valor = 0;
 
         if(contieneGenero(origen)){
-            List<String> candidatos = obtenerAdyacentes(origen);
+            List<Map.Entry<String,Integer>> candidatos = obtenerAdyacentes(origen);
             visitados.add(origen);
             secuencia.add(origen);
             while(!candidatos.isEmpty()){
-                String s = candidatos.remove(0);
+                Map.Entry<String,Integer> fila = candidatos.remove(0);
+                String s = fila.getKey();
+                valor += fila.getValue();
                 if(!visitados.contains(s)){
                     visitados.add(s);
                     secuencia.add(s);
@@ -115,7 +122,7 @@ public class GrafoGeneros implements Cloneable {
                 }
             }
         }
-
+        System.out.println(valor);
         return secuencia;
     }
     
@@ -124,8 +131,5 @@ public class GrafoGeneros implements Cloneable {
 		return "GrafoGeneros [vertices=" + nodos + "]/";
 	}
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+
 }

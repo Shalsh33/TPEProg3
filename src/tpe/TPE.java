@@ -14,18 +14,30 @@ public class TPE {
 
     public static void main(String[] args) {
 
+
     	//Parte 2
     	   Timer temporizador = new Timer();
     	   GrafoGeneros grafo = new GrafoGeneros();
     	   
-    	   final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset1.csv";
+    	   final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv";
     	   temporizador.start();
     	   
     	   CSVReader.readGrafo(grafo, path);
            System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
 
            System.out.println();
-           System.out.println(grafo);
+           //System.out.println(grafo);
+
+           /*for(String s:grafo.secuenciaConMasValor("humor")){
+               System.out.println(s);
+           }                */
+
+        temporizador.start();
+        for(List<String> l: grafo.obtenerCiclos("juegos")){
+            System.out.println(l);
+        }
+        System.out.println(temporizador.stop() + " milisegundos de DFS") ;
+
     	
         /* Parte 1
         Timer temporizador = new Timer();
