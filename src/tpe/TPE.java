@@ -19,13 +19,14 @@ public class TPE {
     	   Timer temporizador = new Timer();
     	   GrafoGeneros grafo = new GrafoGeneros();
     	   
-    	   final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv";
+    	   final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset1.csv";
     	   temporizador.start();
     	   
     	   CSVReader.readGrafo(grafo, path);
            System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
 
            System.out.println();
+           System.out.println("Tamaño del grafo: " + grafo.cantidadVertices());
            //System.out.println(grafo);
 
            /*for(String s:grafo.secuenciaConMasValor("humor")){
@@ -33,9 +34,7 @@ public class TPE {
            }                */
 
         temporizador.start();
-        for(List<String> l: grafo.obtenerCiclos("juegos")){
-            System.out.println(l);
-        }
+        System.out.println(grafo.obtenerCiclos("juegos"));
         System.out.println(temporizador.stop() + " milisegundos de DFS") ;
 
     	

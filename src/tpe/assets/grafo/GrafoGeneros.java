@@ -5,11 +5,9 @@ import java.util.*;
 public class GrafoGeneros implements Cloneable {
 
     private Map<String, Adyacentes> nodos;
-    private HashSet<String> visitados ;
 
     public GrafoGeneros(){
         nodos = new HashMap<>();
-        visitados = new HashSet<String>();
     }
 
     public void agregarGenero(String genero) {
@@ -73,12 +71,14 @@ public class GrafoGeneros implements Cloneable {
      * Obtener el grafo �nicamente con los g�neros afines a un g�nero A
      */
     public List<List<String>> obtenerCiclos(String origen){
-        List<List<String>> lista = new ArrayList<>();
-        List<String> camino = new ArrayList<>();
+        List<List<String>> lista = new LinkedList<>();
+        List<String> camino = new LinkedList<>();
         
         for(Map.Entry<String,Integer> fila: nodos.get(origen).getAdyacentes()){
             String adyacente = fila.getKey();
         	DFS(adyacente, origen, lista, camino );
+            //break;
+            //Ni solo evaluando 1 de los adyacentes puede hacer el DFS en los datasets después del 1
 
         }
 
@@ -86,17 +86,16 @@ public class GrafoGeneros implements Cloneable {
     }
 
     private void DFS(String origen, String destino, List<List<String>> lista, List<String> camino) {
-        if(origen == destino){
-            lista.add(new ArrayList<>(camino)); //guardar copia
+        if(origen.equals(destino)){
+            lista.add(new LinkedList<>(camino)); //guardar copia
+            //System.out.println("camino " + camino);
         } else {
         	for(Map.Entry<String,Integer> fila: nodos.get(origen).getAdyacentes()){
         		String adyacente = fila.getKey();
-        		if (!camino.contains(adyacente) && (!visitados.contains(adyacente))) {
-        			visitados.add(origen) ;
+        		if (!camino.contains(adyacente)) {
         			camino.add(adyacente);
 	        		DFS(adyacente, destino, lista, camino);
 	                camino.remove(adyacente);
-	                visitados.remove(origen) ;
                 }
             }
         }
