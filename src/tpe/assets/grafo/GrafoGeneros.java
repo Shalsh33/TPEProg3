@@ -125,6 +125,15 @@ public class GrafoGeneros implements Cloneable {
         return secuencia;
     }
     
+    public List<Map.Entry<String,Integer>> generosMasBuscados(String origen, int cantidad){
+    	List<Map.Entry<String,Integer>> aux = new ArrayList<>() ;
+    	
+    	if(contieneGenero(origen)){
+    		aux = nodos.get(origen).getNAdyacentes(cantidad) ;
+    	}
+    	return aux ;
+    }
+    
     @Override
 	public String toString() {
 		return "GrafoGeneros [vertices=" + nodos + "]/";

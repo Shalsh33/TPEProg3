@@ -18,14 +18,16 @@ public class TPE {
     	//Parte 2
     	   Timer temporizador = new Timer();
     	   GrafoGeneros grafo = new GrafoGeneros();
-    	   
-    	   final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset1.csv";
+
+    	   //final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv";
+    	   final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset3.csv";
     	   temporizador.start();
     	   
     	   CSVReader.readGrafo(grafo, path);
            System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
 
            System.out.println();
+
            System.out.println("Tamaño del grafo: " + grafo.cantidadVertices());
            //System.out.println(grafo);
 
@@ -36,6 +38,26 @@ public class TPE {
         temporizador.start();
         System.out.println(grafo.obtenerCiclos("juegos"));
         System.out.println(temporizador.stop() + " milisegundos de DFS") ;
+
+
+
+         //Servicio 1: Obtener los N g�neros m�s buscados luego de buscar por el g�nero A.
+           System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
+           
+         //Servicio 2: A partir de un g�nero A encontrar, en tiempo polinomial, la secuencia 
+         //de g�neros que m�s alto valor de b�squeda posee
+           
+           /* for(String s:grafo.secuenciaConMasValor("thriller")){
+               System.out.println(s);
+           }  */       
+
+         //Servicio 3: Obtener el grafo �nicamente con los g�neros afines a un g�nero A
+           
+			/*
+			 * temporizador.start(); for(List<String> l: grafo.obtenerCiclos("juegos")){
+			 * System.out.println(l); } System.out.println(temporizador.stop() +
+			 * " milisegundos de DFS") ;
+			 */
 
     	
         /* Parte 1

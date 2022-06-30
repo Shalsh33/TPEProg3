@@ -62,14 +62,14 @@ public class Adyacentes {
     	}
     	
         if (aux.size() > n) {
-        	return aux.subList(0, n-1) ;
+        	return aux.subList(0, n) ;
         } else {
         	return aux ;
         }
      }
     @Override
  	public String toString() {
- 		return "[adyacentes=" + adyacentes + "]\n";
+ 		return "[adyacentes=" + adyacentes.entrySet() + "]\n";
  	}
 
 }
