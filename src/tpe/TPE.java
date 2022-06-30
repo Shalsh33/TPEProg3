@@ -19,12 +19,22 @@ public class TPE {
     	Timer temporizador = new Timer();
     	GrafoGeneros grafo = new GrafoGeneros();
 
-		final String path = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset1.csv";
-    	final String path2 = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv";
-		final String path3 = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset3.csv";
-		final String path4 = "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset4.csv";
+		/*
+		 * final String path =
+		 * "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset1.csv"; final
+		 * String path2 =
+		 * "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset2.csv"; final
+		 * String path3 =
+		 * "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset3.csv"; final
+		 * String path4 =
+		 * "C:\\Users\\blase\\Desktop\\Prog3\\src\\tpe/assets/csv2/dataset4.csv";
+		 */
     	  
-		//final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset3.csv";
+		final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset3.csv";
+		final String path2 = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset2.csv";
+		final String path3 = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset3.csv";
+		final String path4 = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset4.csv";
+		
     	temporizador.start();
 		System.out.println("Grafo 1");
     	CSVReader.readGrafo(grafo, path);
@@ -80,26 +90,23 @@ public class TPE {
 			System.out.println(s);
 		}
 		System.out.println(temporizador.stop() + " milisegundos de busqueda de secuencia más larga") ;
-/*
-        	temporizador.start();
-        	System.out.println(grafo.obtenerCiclos("juegos"));
-        	System.out.println(temporizador.stop() + " milisegundos de DFS") ;
-
-*/
 
          //Servicio 1: Obtener los N g�neros m�s buscados luego de buscar por el g�nero A.
-          // System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
+		System.out.println("Servicio 1: ");
+		System.out.println(grafo.generosMasBuscados("negocios", 5)) ;
            
          //Servicio 2: A partir de un g�nero A encontrar, en tiempo polinomial, la secuencia 
          //de g�neros que m�s alto valor de b�squeda posee
-           
-           /* for(String s:grafo.secuenciaConMasValor("thriller")){
+        
+		  System.out.println("Servicio 2: ");
+          for(String s:grafo.secuenciaConMasValor("thriller")){
                System.out.println(s);
-           }  */       
+           }       
 
          //Servicio 3: Obtener el grafo �nicamente con los g�neros afines a un g�nero A
            
 			/*
+			 * System.out.println("Servicio 3: ");
 			 * temporizador.start(); 
 			 * for(List<String> l: grafo.obtenerCiclos("juegos")){
 			 * System.out.println(l); } System.out.println(temporizador.stop() +
