@@ -20,6 +20,12 @@ public class Adyacentes {
             adyacentes.put(destino, 1);
         }
     }
+    
+    public void delRelacion(String destino) {
+        if(adyacentes.containsKey(destino)){
+            adyacentes.remove(destino);
+        }
+    }
 
     public List<String> getAdyacentes(){
         List<Map.Entry<String,Integer>> ady = new ArrayList<>(adyacentes.entrySet());
@@ -99,4 +105,9 @@ public class Adyacentes {
         	return aux ;
         }
      }
+    @Override
+ 	public String toString() {
+ 		return "[adyacentes=" + adyacentes + "]\n";
+ 	}
+
 }

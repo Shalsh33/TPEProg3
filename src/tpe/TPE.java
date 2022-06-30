@@ -8,12 +8,26 @@ import java.util.*;
 import src.tpe.Libro;
 import src.tpe.assets.*;
 import src.tpe.assets.Timer;
+import src.tpe.assets.grafo.GrafoGeneros;
 
 public class TPE {
 
     public static void main(String[] args) {
 
-        /*
+    	//Parte 2
+    	   Timer temporizador = new Timer();
+    	   GrafoGeneros grafo = new GrafoGeneros();
+    	   
+    	   final String path = "C://Users/Andrea/eclipse-workspace/TPE/TPEProg3/src/tpe/assets/csv2/dataset1.csv";
+    	   temporizador.start();
+    	   
+    	   CSVReader.readGrafo(grafo, path);
+           System.out.println(temporizador.stop() + " milisegundos de carga de datos") ;
+
+           System.out.println();
+           System.out.println(grafo);
+    	
+        /* Parte 1
         Timer temporizador = new Timer();
         List<Libro> libros = new LinkedList<>();
         Indice indice = new Indice();
@@ -42,74 +56,10 @@ public class TPE {
         }
 */
 
-        //Parte 2
-
-        //Agregar una funcion al CSV reader para que lea y cargue el grafo.
-        //Blas
-
-        //A
-        //Para obtener los N géneros está el método en la clase Adyacentes a completar.
-        // Andre
-
-        //B
-        //Buscar el más alto valor de búsqueda. Esto es un greedy común.
-        //Blas
-
-        //C
-        //Busqueda de ciclos en el grafo
-        //Recorremos todos los adyacentes
-        //Los pasamos a la copia
-        //Es un backtracking común
-        //Andre
-
-
+        
 
     }
 
-  /* private static List<String> quickSort(List<Map.Entry<String, Integer>> ady, int inicio, int fin,int llamado) {
-        int pos = (inicio+fin+1)/2;
-        Map.Entry<String, Integer> pivot = ady.get(pos), auxI,auxJ;
-        int i = inicio;
-        int j = fin;
-
-        while(i<j){
-            while(ady.get(i).getValue() <= pivot.getValue() && i<j){
-                i++;
-            }
-            while(ady.get(j).getValue() > pivot.getValue()){
-                j--;
-            }
-            if(i<j){
-                auxI=ady.get(i);
-                auxJ= ady.get(j);
-                ady.remove(auxI);
-                ady.remove(auxJ);
-                ady.add(i,auxJ);
-                ady.add(j,auxI);
-            }
-
-        }
-
-        auxJ= ady.get(j);
-        ady.remove(auxJ);
-        ady.remove(pivot);
-        ady.add(pos,auxJ);
-        ady.add(j,pivot);
-
-        if(inicio < j-1){
-            quickSort(ady,inicio,j-1, llamado+1);
-        }
-        if (j+1 < fin){
-            quickSort(ady,j+1,fin,llamado+2);
-        }
-        System.out.println("llamado nro " + llamado + "size: " + ady.size());
-        List<String> result = new ArrayList<>();
-        for(Map.Entry<String, Integer> fila : ady){
-            result.add(fila.getKey());
-        }
-        return result;
-
-    }*/
 
 
 }

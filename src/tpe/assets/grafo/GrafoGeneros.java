@@ -5,9 +5,11 @@ import java.util.*;
 public class GrafoGeneros {
 
     private Map<String, Adyacentes> nodos;
+    private HashSet<String> visitados ;
 
     public GrafoGeneros(){
         nodos = new HashMap<>();
+        visitados = new HashSet<String>();
     }
 
     public void agregarGenero(String genero) {
@@ -59,9 +61,10 @@ public class GrafoGeneros {
             return null;
     }
 
-    public void eliminarGenero(String genero) {
-        nodos.remove(genero);
+    public void eliminarRelacion(String generoOrigen, String generoDestino) {
+           nodos.get(generoOrigen).delRelacion(generoDestino);
     }
+    
     /*
      * Obtener el grafo �nicamente con los g�neros afines a un g�nero A
      */
@@ -79,18 +82,20 @@ public class GrafoGeneros {
     }
 
     private void DFS(String origen, String destino, List<GrafoGeneros> lista, GrafoGeneros camino) {
-        /*if(origen == destino){
-            lista.add(camino);
+        if(origen == destino){
+            lista.add(camino); //guardar copia
         } else {
         	for(String adyacente: nodos.get(origen).getAdyacentes()){
         		
-        		camino.agregarRelacion(origen, adyacente);       		
-                
-        		DFS(adyacente, destino, lista, camino);
-                
-                camino.eliminarGenero(origen);
+        		if (!camino.contieneGenero(adyacente) && (!visitados.contains(adyacente))) { 
+        			visitados.add(origen) ;
+        			camino.agregarRelacion(origen, adyacente);       		
+	        		DFS(adyacente, destino, lista, camino);
+	                camino.eliminarRelacion(origen, adyacente);
+	                visitados.remove(origen) ;
+                }
             }
-        }*/
+        }
     }
 
     public List<String> secuenciaConMasValor(String origen){
@@ -113,5 +118,10 @@ public class GrafoGeneros {
 
         return secuencia;
     }
+    
+    @Override
+	public String toString() {
+		return "GrafoGeneros [vertices=" + nodos + "]/";
+	}
 
 }
