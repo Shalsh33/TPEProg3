@@ -2,7 +2,7 @@ package src.tpe.assets.grafo;
 
 import java.util.*;
 
-public class GrafoGeneros {
+public class GrafoGeneros implements Cloneable {
 
     private Map<String, Adyacentes> nodos;
 
@@ -114,4 +114,8 @@ public class GrafoGeneros {
         return secuencia;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
